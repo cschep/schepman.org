@@ -1,0 +1,30 @@
+---
+---
+
+$brand-color: #f74f9e;
+@import "minima";
+
+/**
+ * Links
+ */
+ a {
+  color: $brand-color;
+  text-decoration: none;
+
+  &:visited {
+    color: darken($brand-color, 15%);
+  }
+
+  &:hover {
+    color: darken($brand-color, 20%);
+    text-decoration: underline;
+  }
+
+  .social-media-list &:hover {
+    text-decoration: none;
+
+    .username {
+      text-decoration: underline;
+    }
+  }
+}
