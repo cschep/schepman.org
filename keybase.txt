@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/cschep
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://schepman.org
+  * I am cschep (https://keybase.io/cschep) on keybase.
+  * I have a public key with fingerprint B5D5 D597 6BB3 2F5D 8BDD  9A6E 799F 9DC3 6F08 829C
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01013a79edceb7c5a387299ab0ac68e233ae3c70fd18a5eb1d0d1a343f68ec568b100a",
+      "fingerprint": "b5d5d5976bb32f5d8bdd9a6e799f9dc36f08829c",
+      "host": "keybase.io",
+      "key_id": "799f9dc36f08829c",
+      "kid": "01013a79edceb7c5a387299ab0ac68e233ae3c70fd18a5eb1d0d1a343f68ec568b100a",
+      "uid": "1654a4578eaa071de2ffb7342515ce19",
+      "username": "cschep"
+    },
+    "service": {
+      "hostname": "schepman.org",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1558640256,
+  "expire_in": 157680000,
+  "prev": "981455ec48603f29304a4254c18689da664cf4457f1bae65b2722dd8b76cf727",
+  "seqno": 6,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.0
+Comment: https://keybase.io/crypto
+
+yMIkAnicrVJbSFRBGN61NnExE0QqIpRTbpGi5zbnsuElUkzsoQtUkLjOmTNn96Ce
+s+6eNW9LmkQJQSGlXTFBXwIDBXuxyFLCFIvQ6MUICTKKUkzMpcTmiL312MzDMP//
+fd//f//M6NZNDrfzaWPP7TPVwX7nxLMbEUfZp+XmRkox1XrK20hV4vUDV6k4bPkq
+dZXyUjRDMxwUZawirIgIQE4SWVmGCg2RIGGW4yDmkEhrKiNBgBVGpVUGcjynkSwC
+gqQwNA2pLErTDT8OBUO6YRFZBahky6KgKByrAVVSVFWGAhZlWZNVxAkaLUmsjAgx
+YIZtBmlOgWGcrZskRi6+9fb+gf/PfUfW5RgB8JAHooQhpEVGxaymKSLHs4ABCDOy
+DQzjkAGrMUGjMArgIBXNokisVkfYHqvtYyO/nq6GRrYZ8hNmMGRaJjKrSCZgWcGw
+12Za9UEbeg4rvg0Rn6IbKpkiYdTiUFg3DcrLECSydFuVAUASeJoFQhaF64J6CPt0
+GwFEQaLJsuvgWiIpSwwPAEa8JNCcxsocTayxgEeMJEiyCgWBRxpPzGqMArEAFFZk
+WZU8kSggTWRFyrZVY5iUl1SyoN82pPsNaEVCmIo+Hy7b7HC6HVtccfbvcrgTkv/+
+ud/z8WtFe7ePBDxFcGkw4YCc2bV43UhZeNvSF8g9NNn8YvCWp3fiVUF0Z0PgoRFL
+HPueWdP1uAxO+l0x9xejdWCpZF+F1/kuI7zi+nV/8cp84ZM5x2hgqKe0zbjYJ7UN
+NV3ujt/TMHI4mtw665ym2ztn+scy3qe91juyEzvzU52nW/Y/uFa4Yo5HmpiZ3bm9
+HQPtU/Djz+6k8tilceNzq+b2Zay+mS/45lu6WrKr9XjkR/nwtpfHHDl5acu9Ud/R
+6Tv5gZvuRy1jB3NOXLi7o6fCBfW6OKEuVjw1K31dO3XedfLeamdecUrXggd2ebJ1
+VHO29ENPetJsbM4cKT6Smu75A5l3Qhc=
+=VwFA
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/cschep
+
+==================================================================
