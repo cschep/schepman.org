@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "This is fun?"
+title:  "This is fun"
 date:  2020-04-03
 author: Chris Schepman
 show_signup: false
