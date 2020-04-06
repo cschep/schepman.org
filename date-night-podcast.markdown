@@ -1,6 +1,5 @@
 ---
 layout: page
-title: Date Night Podcast
 permalink: date-night-podcast
 ---
 

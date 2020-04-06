@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "This is fun?"
-date:   2020-04-03 23:59:48 -0700
+date:  2020-04-03
 author: Chris Schepman
+show_signup: false
 ---
 
 This has no categories so don't worry about it.
