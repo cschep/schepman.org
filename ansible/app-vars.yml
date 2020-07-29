@@ -1,0 +1,22 @@
+---
+site_name: "schepman.org"
+site_domain: "schepman.org"
+
+deploy_user: deployer
+deploy_group: "{{ deploy_user }}"
+deploy_user_path: "/home/{{ deploy_user }}"
+
+site_root_path: "{{ deploy_user_path }}/{{ site_name }}"
+
+ufw_rules:
+  - { rule: "allow", proto: "tcp", from: "any", port: "80" }
+  - { rule: "allow", proto: "tcp", from: "any", port: "443" }
+
+# nginx
+nginx_https_enabled: true
+nginx_site_conf_template: "nginx.ssl.site.conf.j2"
+
+# certbot
+certbot_email: "chris@schepman.org"
+certbot_domains:
+  - "{{ site_domain }}"

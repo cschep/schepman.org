@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - app-vars.yml
+
+  roles:
+    - role: ssh
+    - role: nginx
+      tags: nginx
+    - role: certbot
+      tags: certbot
+    - role: ufw
+      tags: ufw
+    - role: goaccess
+      tags: goaccess

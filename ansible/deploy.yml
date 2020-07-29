@@ -1,0 +1,21 @@
+---
+- name: deploy our site
+  hosts: all
+  vars_files:
+    - app-vars.yml
+
+  become: true
+  become_user: "{{ deploy_user }}"
+
+  tasks:
+    - name: setup site folder
+      file:
+        state: directory
+        path: "{{ site_root_path }}"
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_group }}"
+
+    - name: rsync _site to server
+      synchronize:
+        src: ../_site/  #note this trailing slash means it uses this directory instead of copying the _site folder into it
+        dest: "{{ site_root_path }}"

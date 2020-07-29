@@ -1,0 +1,36 @@
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name {{ site_domain }};
+
+    root {{ site_root_path }};
+
+    # SSL
+    ssl_certificate         /etc/letsencrypt/live/{{ site_domain }}/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/{{ site_domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ site_domain }}/chain.pem;
+
+    # security
+    include                 config/security.conf;
+
+    # general things
+    include config/general.conf;
+
+    location / {
+            # first attempt to serve request as file
+            # then as an html file
+            # then as directory
+            # then fall back to displaying a 404.
+            try_files $uri $uri.html $uri/ =404;
+    }
+}
+
+server {
+    listen 80;
+    listen  [::]:80;
+    server_name {{ site_domain }};
+
+    location / {
+        return 301 https://{{ site_domain }}$request_uri;
+    }
+}
