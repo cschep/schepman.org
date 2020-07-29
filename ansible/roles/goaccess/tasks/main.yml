@@ -3,15 +3,6 @@
   command: lsb_release -cs
   register: lsb_release
 
-# - name: Install the dependencies
-#   apt: name={{ item }}  state=latest install_recommends=yes update_cache=yes
-#   with_items:
-#     - libgeoip-dev
-#     - libncursesw5-dev
-#     - libtokyocabinet-dev
-#     - libssl-dev
-#     - apt-transport-https
-
 - name: Install the dependencies
   apt:
     name: ['libgeoip-dev', 'libncursesw5-dev', 'libmaxminddb-dev', 'libtokyocabinet-dev', 'libssl-dev', 'apt-transport-https']
