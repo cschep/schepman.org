@@ -1,0 +1,43 @@
+---
+layout: post
+title:  "This site"
+date:  2020-07-29
+author: Chris Schepman
+show_signup: false
+---
+
+
+Alternative title: Hosting your own Jekyll blog with Nginx on Ubuntu 20.04 LTS
+
+Not as fun though.
+
+It seems fitting that a first post on a nerd's blog would be a meta post about how it all works. We must talk about our creations eh? :)
+
+## TL;DR
+
+This is a static website generated with [Jekyll](https://jekyllrb.com/), hosted on a [Linode](https://www.linode.com/?r=43da15f8d36adbbe4f26914646b1608a908abdb3), running [Ubuntu 20.04 LTS](https://ubuntu.com/download/server). Provisioned and deployed with [Ansible](https://www.ansible.com/). Toss in an SSL cert from [Let's Encrypt](https://letsencrypt.org/). Even a dash of [GoAccess](https://goaccess.io/) to watch all of those delicious visitors in real time? Sold!
+
+## Why? (In which I justify my existence - meaning is created! not an absolute!)
+
+To fend off the inevitable heat death of the universe with toil. With work. For a purpose beyond ourselves!
+
+Nah, it's just fun. I enjoy control and knowing how things work. Heroku and Netlify are cool options. There are many others. If you don't care about doing this yourself I super don't blame you. If you do, let's dive in!
+
+## Why! (Actually answering the question)
+
+**Linode:** I have been using Linode for years. They aren't Amazon, Google, or any other major nightmare of a company. I consider that a *Good Thing* on the whole. Though I am a citizen on planet earth, we're all doing our best. I use them to host a few web things, including this site. A 5$ VPS hosting a static site can get pretty well hammered and be fine. If I ever write something that so many people care about that this thing falls down I will consider it 100% a victory only. I challenge you, dear readers, to make me eat these words.
+
+**Jekyll:** Hugo can generate sites insanely fast and I genuinely enjoy Go. That said.. I don't know how you can get the templating system so wrong. I am fully willing to admit that I am just not smart enough to use it, but.. I fought Hugo for hours, and still didn't get what I wanted. I switched to Jekyll and everything did what I expected almost instantly. Old dog new tricks? I dunno, man. Do what makes you happy ... if you are lucky enough to have any idea what that is.
+
+**NGINX:** NGINX runs the internet. It runs my little piece of the internet as well. What else are you going to use.. Apache? Something new that people haven't hammered on as much? Somethign that wasn't written in C by a russian? Good luck with that.
+
+**Ubuntu:** Straightforward and stable. I'm young enough that I caught the Ubuntu train before the Debian one got to me. I used Arch for tinkering around, and thought it was very cool when I took three days to build out a Gentoo install on an old laptop. Servers need to just work. This seemed like the most boring choice. But like.. sexy boring.
+
+**Let's Encrypt:** A non-profit that's only goal is to make the web a safer place by providing free SSL certs. Sign me up. Have I missed any good reasons I should skeptical here? Let's me just hop on twi.. NOPE. Happiness is fleeting and this one, I think I'll keep this one for myself.
+
+**GoAccess:** We've got to stop giving all the data to Google only to have them treat us badly in return. Do no evil. Psh. I'm trying to de-google my life lately and it's going.. ok. It turns out having a little self respect is harder than it looks. This open source software parses the logs you've already got to give you pretty results in the terminal OR it will generate a nice (live updating!) HTML page. Also written by one guy in C. Patterns emerge? Seriously though. Needed a websocket server.. wrote a websocket server. May we all find our passions.
+
+## How?
+
+Potentially this is the part that anyone might actually find helpful. I cobbled together some ansible scripts to host a Ruby on Rails app the other day and after that was done, I turned around and gutted them to provision and deploy this site.
+

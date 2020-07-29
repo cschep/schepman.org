@@ -28,8 +28,6 @@ twitter_username: cschep
 github_username: cschep
 instagram_username: cschepman
 
-google_analytics: UA-162940749-1
-
 permalink: :year/:month/:day/:title
 
 # Build settings
