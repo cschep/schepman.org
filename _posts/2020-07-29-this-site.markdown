@@ -3,15 +3,16 @@ layout: post
 title:  "This site"
 date:  2020-07-29
 author: Chris Schepman
-show_signup: false
+show_signup: true
 ---
 
-
-Alternative title: Hosting your own Jekyll blog with Nginx on Ubuntu 20.04 LTS
+Alternative title: Hosting your own Jekyll blog with Ansible,Nginx, and Ubuntu 20.04 LTS
 
 Not as fun though.
 
-It seems fitting that a first post on a nerd's blog would be a meta post about how it all works. We must talk about our creations eh? :)
+It seems fitting that my first post would be a meta post about how it all works. We must talk about our creations, yes? If a tree falls in a forest and no one is around to hear it, does it make a sound?
+
+Let us observe as much as we can, I say! If for no other reason than to give the servers running our simulation a run for their money. Or credits, or whatever.
 
 ## TL;DR
 
@@ -35,9 +36,87 @@ Nah, it's just fun. I enjoy control and knowing how things work. Heroku and Netl
 
 **Let's Encrypt:** A non-profit that's only goal is to make the web a safer place by providing free SSL certs. Sign me up. Have I missed any good reasons I should skeptical here? Let's me just hop on twi.. NOPE. Happiness is fleeting and this one, I think I'll keep this one for myself.
 
-**GoAccess:** We've got to stop giving all the data to Google only to have them treat us badly in return. Do no evil. Psh. I'm trying to de-google my life lately and it's going.. ok. It turns out having a little self respect is harder than it looks. This open source software parses the logs you've already got to give you pretty results in the terminal OR it will generate a nice (live updating!) HTML page. Also written by one guy in C. Patterns emerge? Seriously though. Needed a websocket server.. wrote a websocket server. May we all find our passions.
+**GoAccess:** We've got to stop giving all the data to Google only to have them treat us badly in return. Do no evil. Psh. I'm trying to de-google my life lately and it's going.. ok. It turns out having a little self respect is harder than it looks. This beautiful (and free!) software parses the logs you've already got to give you pretty results in the terminal OR it will generate a nice (live updating!) HTML page. Also written by one guy in C. Patterns emerge? Seriously though. Needed a websocket server.. wrote a websocket server. May we all find our passions.
 
 ## How?
 
-Potentially this is the part that anyone might actually find helpful. I cobbled together some ansible scripts to host a Ruby on Rails app the other day and after that was done, I turned around and gutted them to provision and deploy this site.
+Potentially this is the part that anyone might actually find helpful. Most of this work is based on the work already done [here](https://github.com/EmailThis/ansible-rails). There are some thing straight up broken there, so when I got stuck, I found inspiration in a fork [here](https://github.com/noahgibbs/ansible-codefolio). Standing on the shoulders of giants and all that!
 
+### Preprovision
+
+First and foremost! Make sure you check out `app-vars.yml` and set the variables there correctly. They are all set for my site (obviously) but should easily work for you.
+
+Pay special attention to `nginx_https_enabled`. It defaults to `true` because I'm not messing around. You can turn it off if your domain isn't quite ready to point to this machine, or like.. you hate privacy and seeing good prevail over evil.
+
+Now you want to get a server from Linode. Or anywhere. It has to have your SSH key for the root user (Hey there Eagle Eye. Don't get mad. We'll get that disabled! Thanks for caring and know that I see you.).  Also an IP address. Put that IP address in your inventory file(s) and hold onto your butts. You could probably get away with password authentication somewhow but then you'd be back to fighting for the wrong side. Don't give in.
+
+These steps are carried out through this [playbook](https://github.com/cschep/schepman.org/blob/master/ansible/preprovision.yml).
+
+Run `ansible-playbook -i inventories/preprovision.ini preprovision.yml`.
+
+This phase gets some basics going. Installs a user that isn't root, get an ssh key in place for that user, etc. The reason we use a whole inventory file for this stage is that it sets the user to `root`. The production inventory uses the `deployer` user (or whatever you called it in `app-vars`!). You don't need to have two separate inventory files for this, but it's nice to not have to think about providing the correct user when running the playbooks.
+
+### Provision
+
+The meat and potatoes of our situation is handled here. You can reference this playbook [here](https://github.com/cschep/schepman.org/blob/master/ansible/provision.yml).
+
+Run `ansible-playbook -i inventories/production.ini provision.yml`.
+
+* Harden SSH (Phew!)
+* Install and configure NGINX
+* Install and run certbot to get Let's Encrypt certs
+* Setup a cron job for certbot to refresh the certs
+* Setup UFW to only allow ports 80, 443, and 22 (80 to helpfully redirect people to 443, 22 for ssh)
+* Install goaccess (beautiful data!)
+
+### Deploy
+
+This [playbook](https://github.com/cschep/schepman.org/blob/master/ansible/deploy.yml) is dead simple because deploying a static site is so easy.
+
+All it does is make sure there is a folder in the right place, and then rsyncs our static site to it.
+
+You have to remember to build the site yourself even. Maybe I should build that in. Alas.
+
+`JEKYLL_ENV=production bundle exec jekyll build`
+
+`ansible-playbook -i inventories/production.ini deploy.yml`
+
+If all went well you should be able to surf on over to your domain and see your beautiful posts. Like this one.
+
+If you're into it, Check your [google page speed](https://developers.google.com/speed/pagespeed/insights/)! Do an [SSL labs test](https://www.ssllabs.com/ssltest/)!
+
+<img alt="google page speed results at 100%" src="/assets/images/google-page-speed-100.png">
+
+<img alt="ssl test results at A+" src="/assets/images/ssl-test-a+.png">
+
+Bask in the glorious results!
+
+## GoAccess Bonus
+
+If you're still here you get a fun bonus.
+
+I was really excited to find out about [GoAccess](https://goaccess.io) and while I'm no expert, I wanted to pass along a fun little setup to get the real time HTML going through an SSH tunnel.
+
+I wasn't super keen to share the logs of my blog publically, also opening up another port in the firewall doesn't overwhelm me with excitement.
+
+What I do is fire up an SSH tunnl like so!
+
+`ssh -L 8000:localhost:8000 -L 7890:localhost:7890 deployer@192.81.130.222`
+
+For anyone not as familiar with SSH, this essentially means that when you access ports 8000, and 7980 on your personal machine, they will (through your secure SSH connection) access those ports on your server. So useful!
+
+So, then on the remote machine I use `tmux` to run:
+
+`sudo goaccess /var/log/nginx/access.log -o report.html --log-format=COMBINED --real-time-html`
+
+This fires up `goaccess` pointed at our logs. Then `ctrl-b c` to make a new tmux tab and fire up a tiny webserver.
+
+`python3 -m http.server`
+
+This starts a webserver at port 8000 to share the html file that goaccess generates. You can use anything you want for this but python3 is there and it's easy.
+
+Go ahead and navigate to `http://localhost:8000/report.html` on your local machine and the realtime html pops up! Beauty.
+
+Any web server will work, but trying to host it through SSL and opening ports gave me fits. The SSH tunnel really makes it nice.
+
+Happy hosting to you all and thank you for reading. 👨🏼‍💻🎉
