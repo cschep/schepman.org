@@ -3,14 +3,14 @@ layout: page
 title: About
 ---
 
-<img alt="the author's face" class="my-face" src="/assets/images/schepman-gravatar-400.jpeg" height="400" width="400">
+<img alt="the author's face" class="my-face" src="/assets/images/schepman-gravatar-400.jpeg">
 
-My name is Chris Schepman. I'm a generalist software engineer with experience shipping across many stacks. I tend to enjoy automation and making boring technology do useful things. I tend to **not** enjoy being disconnected with the results of my work, and having arbitrary rules control the outcome of my work. I work best with people that focus on empathy first. It's a rare trait in our kind, but it is very important to me.
+My name is Chris Schepman. I'm a technology generalist with experience shipping and supporting products across many software stacks. I enjoy automation and making boring technology do useful things. I love programming, but not for its own sake. I like applying it directly to interesting and fun problems. I work best with people that are kind and smart. I believe that empathy not only makes for a better work experience, but leads to better systems as well.
 
 My relevant experience includes working with companies like:
 
-* [Acorns](http://acorns.com)
 * [Apple](http://apple.com)
+* [Acorns](http://acorns.com)
 * [Planned Parenthood](http://plannedparenthood.com)
 * [Simple](http://simple.com)
 * [Google](http://google.com)
@@ -18,4 +18,6 @@ My relevant experience includes working with companies like:
 
 <!-- My [resume](/resume) has more specifics if you're interested. -->
 
-I consider it a gift that someone would read my writing so thank you for that. If you have anything to say in response I welcome all emails.
+My wife Natalie is in an amazing [band](https://thebandjoseph.com/) that you should definitely check out.
+
+I consider it a gift that someone would read my writing so thank you for that. If you have anything to say in response don't hesitate to drop me an [email](mailto:chris@schepman.org).

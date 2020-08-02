@@ -6,7 +6,7 @@ author: Chris Schepman
 show_signup: true
 ---
 
-Alternative title: Hosting your own Jekyll blog with Ansible,Nginx, and Ubuntu 20.04 LTS
+Alternative title: Hosting your own Jekyll blog with Ansible, Nginx, and Ubuntu 20.04 LTS
 
 Not as fun though.
 
@@ -30,7 +30,7 @@ Nah, it's just fun. I enjoy control and knowing how things work. Heroku and Netl
 
 **Jekyll:** Hugo can generate sites insanely fast and I genuinely enjoy Go. That said.. I don't know how you can get the templating system so wrong. I am fully willing to admit that I am just not smart enough to use it, but.. I fought Hugo for hours, and still didn't get what I wanted. I switched to Jekyll and everything did what I expected almost instantly. Old dog new tricks? I dunno, man. Do what makes you happy ... if you are lucky enough to have any idea what that is.
 
-**NGINX:** NGINX runs the internet. It runs my little piece of the internet as well. What else are you going to use.. Apache? Something new that people haven't hammered on as much? Somethign that wasn't written in C by a russian? Good luck with that.
+**NGINX:** NGINX runs the internet. It runs my little piece of the internet as well. What else are you going to use.. Apache? Something new that people haven't hammered on as much? Something that wasn't written in C by a russian? Good luck with that.
 
 **Ubuntu:** Straightforward and stable. I'm young enough that I caught the Ubuntu train before the Debian one got to me. I used Arch for tinkering around, and thought it was very cool when I took three days to build out a Gentoo install on an old laptop. Servers need to just work. This seemed like the most boring choice. But like.. sexy boring.
 
@@ -48,7 +48,7 @@ First and foremost! Make sure you check out `app-vars.yml` and set the variables
 
 Pay special attention to `nginx_https_enabled`. It defaults to `true` because I'm not messing around. You can turn it off if your domain isn't quite ready to point to this machine, or like.. you hate privacy and seeing good prevail over evil.
 
-Now you want to get a server from Linode. Or anywhere. It has to have your SSH key for the root user (Hey there Eagle Eye. Don't get mad. We'll get that disabled! Thanks for caring and know that I see you.).  Also an IP address. Put that IP address in your inventory file(s) and hold onto your butts. You could probably get away with password authentication somewhow but then you'd be back to fighting for the wrong side. Don't give in.
+Now you want to get a server from Linode. Or anywhere. It has to have your SSH key for the root user (Hey there Eagle Eye. Don't get mad. We'll get that disabled! Thanks for caring and know that I see you.).  Also an IP address. Put that IP address in your inventory file(s) and hold onto your butts. You could probably get away with password authentication somehow but then you'd be back to fighting for the wrong side. Don't give in.
 
 These steps are carried out through this [playbook](https://github.com/cschep/schepman.org/blob/master/ansible/preprovision.yml).
 
@@ -97,9 +97,9 @@ If you're still here you get a fun bonus.
 
 I was really excited to find out about [GoAccess](https://goaccess.io) and while I'm no expert, I wanted to pass along a fun little setup to get the real time HTML going through an SSH tunnel.
 
-I wasn't super keen to share the logs of my blog publically, also opening up another port in the firewall doesn't overwhelm me with excitement.
+I wasn't super keen to share the logs of my blog publicly, also opening up another port in the firewall doesn't overwhelm me with excitement.
 
-What I do is fire up an SSH tunnl like so!
+What I do is fire up an SSH tunnel like so!
 
 `ssh -L 8000:localhost:8000 -L 7890:localhost:7890 deployer@192.81.130.222`
 
