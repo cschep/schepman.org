@@ -19,5 +19,3 @@
       synchronize:
         src: ../_site/  # note this trailing slash means it uses this directory instead of copying the _site folder into it
         dest: "{{ site_root_path }}"
-        owner: no # this should be called "preserve_owner" -> don't carry the permissions over, leave them as setup previously.
-        group: no  # this should be called "preserve_group" -> we also don't want it
