@@ -19,3 +19,4 @@
       synchronize:
         src: ../_site/  # note this trailing slash means it uses this directory instead of copying the _site folder into it
         dest: "{{ site_root_path }}"
+        delete: true
