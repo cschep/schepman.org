@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  {% if jekyll.environment == 'production' %}
+    {% include plausible-analytics.html %}
+  {% endif %}
+</head>
+<body>
+  <header>
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <nav>
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>home</a>
+      <a href="{{ '/projects' | relative_url }}" {% if page.url == '/projects' %}class="active"{% endif %}>projects</a>
+      <a href="{{ '/blog' | relative_url }}" {% if page.url == '/blog' %}class="active"{% endif %}>blog</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>
+      <a href="https://github.com/{{ site.github_username }}">github</a> ·
+      <a href="https://twitter.com/{{ site.twitter_username }}">twitter</a> ·
+      <a href="https://instagram.com/{{ site.instagram_username }}">instagram</a> ·
+      <a href="mailto:{{ site.email }}">email</a> ·
+      <a href="{{ '/feed.xml' | relative_url }}">rss</a>
+    </p>
+    <p>© {{ 'now' | date: '%Y' }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>

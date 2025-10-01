@@ -31,7 +31,7 @@ instagram_username: cschepman
 permalink: :year/:month/:day/:title
 
 # Build settings
-theme: minima
+# theme: minima (disabled - using custom theme)
 plugins:
   - jekyll-feed
 
