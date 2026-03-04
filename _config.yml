@@ -22,8 +22,8 @@ title: schepman.org
 email: chris@schepman.org
 description: >- # this means to ignore newlines until "baseurl:"
   You have found yourself to the personal website of Chris Schepman. What a treat. 🌝
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://schepman.org" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://cschep.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: cschep
 github_username: cschep
 instagram_username: cschepman
@@ -56,3 +56,4 @@ exclude:
   - vendor/ruby/
   - ansible
   - README.md
+  - .github
