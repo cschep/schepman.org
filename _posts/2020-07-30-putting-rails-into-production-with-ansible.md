@@ -6,6 +6,8 @@ author: Chris Schepman
 show_signup: true
 ---
 
+*Update: The Ansible setup described below has been retired, but the concepts still apply!*
+
 # TL;DR
 
 I went from a hard to reproduce, hand configured server for hosting a Rails app to a nicely automated setup using Ansible. The repo is [here](https://github.com/cschep/ketten) and you can scope the README for easy to reproduce steps.
