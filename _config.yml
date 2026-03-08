@@ -54,6 +54,5 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - ansible
   - README.md
   - .github

@@ -26,7 +26,6 @@ Personal website/blog at schepman.org built with Jekyll (Ruby static site genera
 - `_includes/` — Reusable HTML partials (head, footer, analytics)
 - `_plugins/` — Custom Jekyll plugins (word count stats)
 - `assets/` — CSS and images
-- `ansible/` — Legacy Ansible deployment roles (kept for reference)
 
 ### Styling
 
